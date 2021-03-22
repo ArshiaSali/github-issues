@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import GitHubIssueService from '../services/GitHubIssueService'
+import ReactPaginate from 'react-paginate';
 
 class ListGitHubIssues extends Component {
     constructor(props) {
         super(props)
         this.state = {
-                issues: []
+                issues: [],
+                currentPage:0
         }
+        this.handlePageClick = this.handlePageClick.bind(this);
     }
     viewIssue(number){
         //console.log(number);
@@ -17,7 +20,27 @@ class ListGitHubIssues extends Component {
             this.setState({ issues: res.data});
         });
     }
+    handlePageClick({ selected: selectedPage }) {
+       // setCurrentPage(selectedPage);
+       this.setState({currentPage:selectedPage});
+    }
     render() {
+        const PER_PAGE = 10;
+        const offset = this.state.currentPage * PER_PAGE;
+        const currentPageData = this.state.issues
+            .slice(offset, offset + PER_PAGE)
+            .map(
+                issue => 
+                <tr key = {issue.id}>
+                     <td> { issue.id} </td>   
+                     <td> {issue.title}</td>
+                     <td> {issue.state}</td>
+                     <td>
+                     <button style={{marginLeft: "10px"}} onClick={ () => this.viewIssue(issue.number)} className="btn btn-info">View </button>
+                     </td>
+                </tr>
+            );
+        const pageCount = Math.ceil(this.state.issues.length / PER_PAGE);
         console.log(this.state.issues);
         return (
             <div>
@@ -35,23 +58,22 @@ class ListGitHubIssues extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                    this.state.issues.map(
-                                        issue => 
-                                        <tr key = {issue.id}>
-                                             <td> { issue.id} </td>   
-                                             <td> {issue.title}</td>
-                                             <td> {issue.state}</td>
-                                             <td>
-                                             <button style={{marginLeft: "10px"}} onClick={ () => this.viewIssue(issue.number)} className="btn btn-info">View </button>
-                                             </td>
-                                        </tr>
-                                    )
-                                }
+                                {currentPageData}
                             </tbody>
                         </table>
 
                  </div>
+                 <ReactPaginate
+                    previousLabel={"← Previous"}
+                    nextLabel={"Next →"}
+                    pageCount={pageCount}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={"pagination"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"}
+                />
             </div>
         )
     }
