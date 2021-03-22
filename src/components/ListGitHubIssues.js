@@ -8,6 +8,10 @@ class ListGitHubIssues extends Component {
                 issues: []
         }
     }
+    viewIssue(number){
+        //console.log(number);
+        this.props.history.push(`/${number}`);
+    }
     componentDidMount(){
         GitHubIssueService.getIssues().then((res) => {
             this.setState({ issues: res.data});
@@ -39,7 +43,7 @@ class ListGitHubIssues extends Component {
                                              <td> {issue.title}</td>
                                              <td> {issue.state}</td>
                                              <td>
-                                                 <button style={{marginLeft: "10px"}} className="btn btn-info">View </button>
+                                             <button style={{marginLeft: "10px"}} onClick={ () => this.viewIssue(issue.number)} className="btn btn-info">View </button>
                                              </td>
                                         </tr>
                                     )
