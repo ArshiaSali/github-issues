@@ -23,13 +23,18 @@ class ListGitHubIssues extends Component {
             this.setState({ issues: res.data});
         });
     }
+
+    //function to set current page when pagination component is clicked to navigate to a different page
     handlePageClick({ selected: selectedPage }) {
-       // setCurrentPage(selectedPage);
        this.setState({currentPage:selectedPage});
     }
+
+    //function to close the details modal
     handleClose(){
         this.setState({showModal:false})
     }
+
+    //function to show details of a selected issue in a modal
     handleShow(issue){
         this.setState(
             {showModal:true,
