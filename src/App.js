@@ -11,7 +11,6 @@ function App() {
           <div className="container">
               <Switch> 
                     <Route path = "/" exact component = {ListGitHubIssues}></Route>
-                    <Route path = "/issues" component = {ListGitHubIssues}></Route>
               </Switch>
           </div>
       </Router>
