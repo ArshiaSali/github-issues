@@ -20,7 +20,10 @@ class ListGitHubIssues extends Component {
     }
     componentDidMount(){
         GitHubIssueService.getIssues().then((res) => {
-            this.setState({ issues: res.data});
+            if(res !== null && res.data !== undefined && res.data.length !== 0){
+                this.setState({ issues: res.data});
+            }
+            
         });
     }
 
@@ -62,7 +65,9 @@ class ListGitHubIssues extends Component {
             <div>
                  <h2 className="text-center">Issues</h2>
                  <br></br>
-                 <div className = "row">
+                 {this.state.issues.length !== 0 ?  
+                 <div>
+                       <div className = "row">
                         <Table striped bordered hover size="sm" variant="dark">
                             <thead>
                                 <tr>
@@ -93,6 +98,12 @@ class ListGitHubIssues extends Component {
                   {Object.keys(this.state.selectedIssue).length === 0 ? null : 
                  <IssueDetailedView showDetails={this.state.showModal} currentIssue={this.state.selectedIssue} close={this.handleClose}/>
                 }
+                 </div>
+                :
+                <p>
+                    No issues for this Repository    
+                </p>}
+               
             </div>
         )
     }
