@@ -4,8 +4,11 @@ This project lists out the issues for a given organization and a given repositor
 
 ## Main Screen
 
+![github_ui_1](https://user-images.githubusercontent.com/37695314/112098944-d5cbf680-8b5f-11eb-8b7f-940e5726fd2c.PNG)
 
 ## Detailed View
+
+![github_ui_details](https://user-images.githubusercontent.com/37695314/112098959-debcc800-8b5f-11eb-828a-453ec3b663cd.PNG)
 
 
 To run the code,
