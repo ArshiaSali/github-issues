@@ -24,17 +24,17 @@ class IssueDetailedView extends Component {
             <Form.Row>
                     <Form.Group as={Col} controlId="issueId">
                     <Form.Label>Id</Form.Label>
-                    <Form.Control type="text" value={this.props.currentIssue.id}/>
+                    <Form.Control type="text" readOnly value={this.props.currentIssue.id}/>
                     </Form.Group>
             
                     <Form.Group as={Col} controlId="issueOwner">
                     <Form.Label>Owner</Form.Label>
-                    <Form.Control type="text" value={this.props.currentIssue.user.login}/>
+                    <Form.Control type="text" readOnly value={this.props.currentIssue.user.login}/>
                     </Form.Group>
             
                     <Form.Group as={Col} controlId="issueStatus">
                     <Form.Label>Status</Form.Label>
-                    <Form.Control type="text" value={this.props.currentIssue.state}>
+                    <Form.Control type="text" readOnly value={this.props.currentIssue.state}>
                     </Form.Control>
                     </Form.Group>
             
@@ -42,24 +42,24 @@ class IssueDetailedView extends Component {
                 <Form.Row>
                     <Form.Group as={Col} controlId="issueTitle">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" value={this.props.currentIssue.title} />
+                    <Form.Control type="text" readOnly value={this.props.currentIssue.title} />
                     </Form.Group>
                 </Form.Row>
                 <Form.Row>
                     <Form.Group as={Col} controlId="issueBody">
                         <Form.Label>Body</Form.Label>
-                        <Form.Control as="textarea" rows={3} value={this.props.currentIssue.body}/>
+                        <Form.Control as="textarea" rows={3} readOnly value={this.props.currentIssue.body}/>
                     </Form.Group>
                 </Form.Row>
                 <Form.Row>
                     <Form.Group as={Col} controlId="issueCreatedAt">
                     <Form.Label>Created At</Form.Label>
-                    <Form.Control type="text" value={this.props.currentIssue.created_at}/>
+                    <Form.Control type="text" readOnly value={this.props.currentIssue.created_at}/>
                     </Form.Group>
             
                     <Form.Group as={Col} controlId="issueUpdatedAt">
                     <Form.Label>Updated At</Form.Label>
-                    <Form.Control type="text" value={this.props.currentIssue.updated_at}/>
+                    <Form.Control type="text" readOnly value={this.props.currentIssue.updated_at}/>
                     </Form.Group>
             
                 </Form.Row>

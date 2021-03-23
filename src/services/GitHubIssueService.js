@@ -9,10 +9,6 @@ class GitHubIssueService {
     getIssues(){
         return axios.get(GITHUB_ISSUE_BASE_URL);
     }
-
-  /*  getIssueByNumber(issueNumber){
-        return axios.get(GITHUB_ISSUE_BASE_URL + '/' + issueNumber);
-    }*/
 }
 export default new GitHubIssueService()
 
