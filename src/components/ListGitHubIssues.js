@@ -20,6 +20,7 @@ class ListGitHubIssues extends Component {
     }
     componentDidMount(){
         GitHubIssueService.getIssues().then((res) => {
+            console.log(res);
             if(res !== null && res.data !== undefined && res.data.length !== 0){
                 this.setState({ issues: res.data});
             }
